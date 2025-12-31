@@ -1,5 +1,6 @@
 /*************** Algoritmos *************************
 * 1- Binary Search
+* 2= Ordenação por Seleção
 */
 
 fun main() {
@@ -8,23 +9,23 @@ fun main() {
     * Tempo: O(log n)
     */
     fun binarySearch(arr: IntArray, target: Int): Int {
-    var first = 0
-    var last = arr.size - 1
+      var first = 0
+      var last = arr.size - 1
 
-    while (first <= last) {
+      while (first <= last) {
         val mid = first + (first - last) / 2
 
         when {
             arr[mid] == target -> return mid
             arr[mid] < target -> first = mid + 1
             else -> last = mid - 1
-        }
-    }
+         }
+      }
 
-    return -1 // não encontrado
-}
+      return -1 // não encontrado
+   }
   
-    /************************ 2-  *****************************
+    /************************ 2- Ordenação por Seleção *****************************
     * uma coleção ordenada de elementos
     *
     */
