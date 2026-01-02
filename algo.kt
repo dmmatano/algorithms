@@ -1,6 +1,7 @@
 /*************** Algoritmos *************************
 * 1- Binary Search
 * 2- Ordenação por Seleção
+* 3- Recursão
 */
 
 fun main() {
@@ -53,6 +54,29 @@ fun main() {
         }
     }
 
+    /************************ 3- Recursão *****************************
+    * Função chama ela mesma. Pense em "pilha de chamadas". Caso recursivo: quando a fun chama ela mesmo, chegando mais próximo ao caso base.
+    * Caso base: quando a fun para.
+    * Visualização: https://www.youtube.com/shorts/ya176hFz_f8
+    */
+
+    //Exemplo: fatorial
+
+    fun fat(n: Int){
+        if(n == 1) return 1 //caso base
+
+        return n * fat(n - 1) //caso recursivo
+    }
+
+    /* Para num = 3, a pilha de chamada seria algo do tipo
+    *
+    * |  fat  | <-- 3.por último, fat(1), que é concluída e retirada do topo. Logo após fat(2) conclui e sai do topo também. 
+    * | n | 1 |       No final, sobra apenas fat(3), e o caso recursivo ficaria x*2*1  
+    * |  fat  | <-- 2.em seguida fat(2), o adicionando no topo da pilha e pausando a chamada de fat(3)
+    * | n | 2 |
+    * |  fat  | <-- 1.primeiro chamou fat(3)
+    * | n | 3 |
+    */
   
     
   }
