@@ -2,6 +2,11 @@
 * 1- Binary Search
 * 2- Ordenação por Seleção
 * 3- Recursão
+*
+**************** Paradigmas *************************
+* P1- Dividir para Conquistar
+*
+*
 */
 
 fun main() {
@@ -76,6 +81,11 @@ fun main() {
     * | n | 2 |
     * |  fat  | <-- 1.primeiro chamou fat(3)
     * | n | 3 |
+    */
+
+    /************************ P1-Dividir para Conquistar *****************************
+    * Resolve um problema grande quebrando ele em partes menores, resolve cada parte separadamente e depois combina os resultados.
+    * 
     */
   
     
