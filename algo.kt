@@ -1,12 +1,13 @@
 /*************** Algoritmos *************************
 * 1- Binary Search
-* 2= Ordenação por Seleção
+* 2- Ordenação por Seleção
 */
 
 fun main() {
     /************************ 1- Binary Search *****************************
-    * Posicao do meio como referencia e pergunta se é maior ou menos que o meio. Tem que estar ordenado
+    * Posicao do meio como referencia e pergunta se é maior ou menos que o meio. Tem que estar ordenado!
     * Tempo: O(log n)
+    * Visualização: https://www.youtube.com/shorts/c-PMOD2O7E4
     */
     fun binarySearch(arr: IntArray, target: Int): Int {
       var first = 0
@@ -26,9 +27,32 @@ fun main() {
    }
   
     /************************ 2- Ordenação por Seleção *****************************
-    * uma coleção ordenada de elementos
-    *
+    * Percorre o array procurando o menor elemento, coloca esse menor elemento na posição correta e repete isso para o restante do array
+    * Tempo: O(n²)
+    * Visualização: https://www.youtube.com/shorts/ya176hFz_f8
     */
+    fun selectionSort(arr: IntArray) {
+        val n = arr.size
+
+        for (i in 0 until n - 1) {
+            var indexMenor = i
+    
+            // Procura o menor elemento no restante do array
+            for (j in i + 1 until n) {
+                if (arr[j] < arr[indexMenor]) {
+                    indexMenor = j
+                }
+            }
+    
+            // Troca o menor encontrado com a posição atual
+            if (indexMenor != i) {
+                val temp = arr[i]
+                arr[i] = arr[indexMenor]
+                arr[indexMenor] = temp
+            }
+        }
+    }
+
   
     
   }
