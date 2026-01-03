@@ -86,7 +86,7 @@ fun main() {
 
     /************************ 4-Quick Sort *****************************
     * Pega um pivot e cria 2 subarrays, o da esquerda com valores menores que o pivot e da direita com valores maiores. Depois fazer quick sort com cada subarray
-    * Tempo: Depende do pivot. Pior caso é O(n²), melhor caso O(n log n)
+    * Tempo: Depende do pivot e como está a lista (e da sorte kk). Pior caso é O(n²), melhor caso O(n log n)
     * Visualização: https://www.youtube.com/shorts/gwmBK_W1Gm4
     */
 
