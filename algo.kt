@@ -2,6 +2,7 @@
 * 1- Binary Search
 * 2- Ordenação por Seleção
 * 3- Recursão
+* 4- Quick Sort
 *
 **************** Paradigmas *************************
 * P1- Dividir para Conquistar
@@ -82,6 +83,34 @@ fun main() {
     * |  fat  | <-- 1.primeiro chamou fat(3)
     * | n | 3 |
     */
+
+    /************************ 4-Quick Sort *****************************
+    * Pega um pivot e cria 2 subarrays, o da esquerda com valores menores que o pivot e da direita com valores maiores. Depois fazer quick sort com cada subarray
+    * Tempo: Depende do pivot. Pior caso é O(n²), melhor caso O(n log n)
+    * Visualização: https://www.youtube.com/shorts/gwmBK_W1Gm4
+    */
+
+    fun quickSort(arr: IntArray): IntArray {
+        if (arr.size < 2) return arr
+    
+        val pivot = arr[0]
+        val rest = arr.drop(1)
+    
+        val minorsArr = rest.filter { it <= pivot }.toIntArray()
+        val majorsArr = rest.filter { it > pivot }.toIntArray()
+    
+        return quickSort(minorsArr) + pivot + quickSort(majorsArr)
+    }
+
+    //se quiser se proteger do pior caso, usa a mediana como pivot
+    fun medianOfThree(arr: IntArray): Int {
+        val first = arr[0]
+        val middle = arr[arr.size / 2]
+        val last = arr[arr.size - 1]
+    
+        return listOf(first, middle, last).sorted()[1]
+    }
+    
 
     /************************ P1-Dividir para Conquistar *****************************
     * Resolve um problema grande quebrando ele em partes menores, resolve cada parte separadamente e depois combina os resultados.
