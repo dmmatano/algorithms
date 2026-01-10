@@ -3,6 +3,7 @@
 * 2- Ordenação por Seleção
 * 3- Recursão
 * 4- Quick Sort
+* 5- BFS (Breadth First Search)
 *
 **************** Paradigmas *************************
 * P1- Dividir para Conquistar
@@ -110,6 +111,45 @@ fun main() {
     
         return listOf(first, middle, last).sorted()[1]
     }
+
+     /************************ 5- BFS (Busca em Largura) *****************************
+    * usado para percorrer ou buscar elementos em um grafo ou árvore, explorando primeiro os nós mais próximos do ponto inicial.
+    * Tempo:O(V + E).   V = vertice e A = arestas
+    * Vantagem: Ideal para problemas de distância mínima em grafos não ponderados, simples
+    * Desvantagens: Usa mais memória, Não funciona bem para grafos muito grandes ou infinitos
+    * Visualização: https://www.youtube.com/shorts/umHJzlKFGlU
+    */
+
+    fun bfs(graph: Map<Int, List<Int>>, start: Int) {
+        val visited = mutableSetOf<Int>()
+        val queue: ArrayDeque<Int> = ArrayDeque()
+    
+        visited.add(start)
+        queue.add(start)
+    
+        while (queue.isNotEmpty()) {
+            val node = queue.removeFirst()
+            println(node)
+    
+            for (neighbor in graph[node] ?: emptyList()) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor)
+                    queue.add(neighbor)
+                }
+            }
+        }
+    }
+
+    val graph = mapOf(
+        1 to listOf(2, 3),
+        2 to listOf(4),
+        3 to listOf(5),
+        4 to emptyList(),
+        5 to emptyList()
+    )
+    
+    bfs(graph, 1)
+
     
 
     /************************ P1-Dividir para Conquistar *****************************
