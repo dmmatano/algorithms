@@ -4,6 +4,7 @@
 * 3- Recursão
 * 4- Quick Sort
 * 5- BFS (Breadth First Search)
+* 6- Dijkstra algorithm
 *
 **************** Paradigmas *************************
 * P1- Dividir para Conquistar
@@ -150,7 +151,13 @@ fun main() {
     
     bfs(graph, 1)
 
-    
+    /************************ 6- Dijkstra Algorithm *****************************
+    *  
+    * Tempo: 
+    * Vantagem: 
+    * Desvantagens: 
+    * Visualização: 
+    */
 
     /************************ P1-Dividir para Conquistar *****************************
     * Resolve um problema grande quebrando ele em partes menores, resolve cada parte separadamente e depois combina os resultados.
