@@ -152,12 +152,58 @@ fun main() {
     bfs(graph, 1)
 
     /************************ 6- Dijkstra Algorithm *****************************
-    *  
-    * Tempo: 
-    * Vantagem: 
-    * Desvantagens: 
-    * Visualização: 
+    * O algoritmo de Dijkstra é usado para encontrar o menor caminho entre um nó origem e os demais nós de um grafo ponderado, desde que não existam pesos negativos
+    * Tempo: O((V + E) log V) ou O(V²)
+    * Vantagem: Mapas / GPS, Redes, Sistemas de recomendação, Jogos, Roteamento
+    * Desvantagens: Se houver pesos negativos → use Bellman-Ford, Se o grafo for muito pequeno → solução simples funciona
+    * Visualização: https://www.youtube.com/watch?v=IIZOWRwKa_Q
     */
+
+    import java.util.PriorityQueue
+    
+    data class Edge(val to: Int, val weight: Int)
+    
+    fun dijkstra(
+        graph: List<List<Edge>>,
+        start: Int
+    ): IntArray {
+    
+        val n = graph.size
+        val dist = IntArray(n) { Int.MAX_VALUE }
+        dist[start] = 0
+    
+        val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })
+        pq.add(start to 0)
+    
+        while (pq.isNotEmpty()) {
+            val (node, currentDist) = pq.poll()
+    
+            if (currentDist > dist[node]) continue
+    
+            for (edge in graph[node]) {
+                val newDist = currentDist + edge.weight
+    
+                if (newDist < dist[edge.to]) {
+                    dist[edge.to] = newDist
+                    pq.add(edge.to to newDist)
+                }
+            }
+        }
+    
+        return dist
+    }
+
+    val graph = listOf(
+        listOf(Edge(1, 4), Edge(2, 1)), // nó 0
+        listOf(Edge(3, 1)),            // nó 1
+        listOf(Edge(1, 2), Edge(3, 5)), // nó 2
+        emptyList()                    // nó 3
+    )
+    
+    val result = dijkstra(graph, 0)
+    println(result.toList()) // [0, 3, 1, 4]
+
+
 
     /************************ P1-Dividir para Conquistar *****************************
     * Resolve um problema grande quebrando ele em partes menores, resolve cada parte separadamente e depois combina os resultados.
