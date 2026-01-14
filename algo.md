@@ -1,16 +1,33 @@
-/*************** Algoritmos *************************
-* 1- Binary Search
-* 2- Ordenação por Seleção
-* 3- Recursão
-* 4- Quick Sort
-* 5- BFS (Breadth First Search)
-* 6- Dijkstra algorithm
-*
-**************** Paradigmas *************************
-* P1- Dividir para Conquistar
-*
-*
-*/
+# Algoritmos
+
+## 🔍 Algoritmos de Busca 
+1. Busca Linear (Linear Search)
+2. Busca Binária (Binary Search)
+3. Busca em Profundidade (DFS)
+4. Busca em Largura (BFS)
+
+## 🔢 Algoritmos de Ordenação
+10. Bubble Sort
+11. Selection Sort
+12. Insertion Sort
+13. Merge Sort
+14. Quick Sort
+15. Heap Sort
+16. Tim Sort
+
+
+
+## 🌐 Algoritmos de Grafos
+BFS
+DFS
+Dijkstra
+Bellman-Ford
+A*
+Kruskal
+Prim
+Topological Sort
+
+## 🧠 Programação Dinâmica
 
 fun main() {
     /************************ 1- Binary Search *****************************
