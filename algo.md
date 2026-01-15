@@ -141,7 +141,19 @@ import java.util.PriorityQueue
 ### Coin Change
 
 ## ⚡Algoritmos Gulosos (Greedy)
-### Activity Selection
+### Activity Selection 
+Você tem várias atividades, cada uma com horário de início e horário de fim
+O objetivo dado é escolher o maior número possível de atividades, sem que elas se sobreponham.
+1. Sempre escolha a atividade que termina mais cedo.
+2. Ordene as atividades pelo horário de fim
+3. Escolha a primeira
+4. Para cada próxima: se o início ≥ fim da última escolhida → escolha
+5. Continue até acabar
+
+```kotlin
+data class Activity(val start: Int, val end: Int)
+
+```
 ### Interval Scheduling
 ### Huffman Coding
 ### Kruskal
