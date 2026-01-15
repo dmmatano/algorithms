@@ -1,41 +1,15 @@
 # Algoritmos
 
 ## 🔍 Algoritmos de Busca 
-1. Busca Linear (Linear Search)
-2. Busca Binária (Binary Search)
-3. Busca em Profundidade (DFS)
-4. Busca em Largura (BFS)
+### Busca Linear (Linear Search)
 
-## 🔢 Algoritmos de Ordenação
-10. Bubble Sort
-11. Selection Sort
-12. Insertion Sort
-13. Merge Sort
-14. Quick Sort
-15. Heap Sort
-16. Tim Sort
+### Busca Binária (Binary Search)
+Posicao do meio como referencia e pergunta se é maior ou menos que o meio. Tem que estar ordenado! <br>
+**Tempo:** O(log n) <br>
+**Visualização:** https://www.youtube.com/shorts/c-PMOD2O7E4 <br>
 
-
-
-## 🌐 Algoritmos de Grafos
-BFS
-DFS
-Dijkstra
-Bellman-Ford
-A*
-Kruskal
-Prim
-Topological Sort
-
-## 🧠 Programação Dinâmica
-
-fun main() {
-    /************************ 1- Binary Search *****************************
-    * Posicao do meio como referencia e pergunta se é maior ou menos que o meio. Tem que estar ordenado!
-    * Tempo: O(log n)
-    * Visualização: https://www.youtube.com/shorts/c-PMOD2O7E4
-    */
-    fun binarySearch(arr: IntArray, target: Int): Int {
+```kotlin
+fun binarySearch(arr: IntArray, target: Int): Int {
       var first = 0
       var last = arr.size - 1
 
@@ -51,13 +25,19 @@ fun main() {
 
       return -1 // não encontrado
    }
-  
-    /************************ 2- Ordenação por Seleção *****************************
-    * Percorre o array procurando o menor elemento, coloca esse menor elemento na posição correta e repete isso para o restante do array
-    * Tempo: O(n²)
-    * Visualização: https://www.youtube.com/shorts/ya176hFz_f8
-    */
-    fun selectionSort(arr: IntArray) {
+```
+4. Busca em Profundidade (DFS)
+5. Busca em Largura (BFS)
+
+## 🔢 Algoritmos de Ordenação
+10. Bubble Sort
+### Selection Sort
+Percorre o array procurando o menor elemento, coloca esse menor elemento na posição correta e repete isso para o restante do array<br>
+Tempo: O(n²)<br>
+Visualização: https://www.youtube.com/shorts/ya176hFz_f8<br>
+
+```kotlin
+fun selectionSort(arr: IntArray) {
         val n = arr.size
 
         for (i in 0 until n - 1) {
@@ -78,6 +58,57 @@ fun main() {
             }
         }
     }
+```
+12. Insertion Sort
+13. Merge Sort
+14. Quick Sort
+15. Heap Sort
+16. Tim Sort
+
+## 🌐 Algoritmos de Grafos
+BFS
+DFS
+Dijkstra
+Bellman-Ford
+A*
+Kruskal
+Prim
+Topological Sort
+
+## 🧠 Programação Dinâmica
+Fibonacci (DP)
+Knapsack (0/1)
+Longest Common Subsequence (LCS)
+Longest Increasing Subsequence (LIS)
+Edit Distance (Levenshtein)
+Coin Change
+
+## ⚡Algoritmos Gulosos (Greedy)
+Activity Selection
+Interval Scheduling
+Huffman Coding
+Kruskal
+Prim
+Coin Change (versão gulosa)
+
+## 📐 Algoritmos de Aproximação
+Vertex Cover (2-approx)
+Set Cover
+Traveling Salesman (TSP – aproximação)
+Knapsack Approximation
+
+## 🧱 Hashing e Estruturas Relacionadas
+Hash Table
+Open Addressing
+Separate Chaining
+Consistent Hashing
+
+---
+
+    /************************ 2- Ordenação por Seleção *****************************
+
+    */
+    
 
     /************************ 3- Recursão *****************************
     * Função chama ela mesma. Pense em "pilha de chamadas". Caso recursivo: quando a fun chama ela mesmo, chegando mais próximo ao caso base.
