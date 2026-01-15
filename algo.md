@@ -1,5 +1,9 @@
 # Algoritmos
-
+### Classes de Problemas
+**P (Polynomial Time):** fácil de resolver, fácil de verificar se está certo<br>
+**NP (Nondeterministic Polynomial Time):** resolver é difícil, mas conferir é fácil.<br>
+**NP-Completo:** NP-Completo é um NP, resolver é difícil e conferir é fácil, mas o mais difícil. Você tem vários problemas difíceis, o mais difícil de todos é o NP-Completo. <br>
+**NP-Difícil:** Às vezes nem dá pra conferir se a resposta está certa, pode nem ter resposta clara
 ## 🔍 Algoritmos de Busca 
 ### Busca Linear (Linear Search)
 
@@ -26,11 +30,11 @@ fun binarySearch(arr: IntArray, target: Int): Int {
       return -1 // não encontrado
    }
 ```
-4. Busca em Profundidade (DFS)
-5. Busca em Largura (BFS)
+### Busca em Profundidade (DFS)
+### Busca em Largura (BFS)
 
 ## 🔢 Algoritmos de Ordenação
-10. Bubble Sort
+### Bubble Sort
 ### Selection Sort
 Percorre o array procurando o menor elemento, coloca esse menor elemento na posição correta e repete isso para o restante do array<br>
 Tempo: O(n²)<br>
@@ -59,49 +63,147 @@ fun selectionSort(arr: IntArray) {
         }
     }
 ```
-12. Insertion Sort
-13. Merge Sort
-14. Quick Sort
-15. Heap Sort
-16. Tim Sort
+### Insertion Sort
+### Merge Sort
+### Quick Sort
+### Heap Sort
+### Tim Sort
 
 ## 🌐 Algoritmos de Grafos
-BFS
-DFS
-Dijkstra
-Bellman-Ford
-A*
-Kruskal
-Prim
-Topological Sort
+### BFS
+### DFS
+### Dijkstra
+O algoritmo de Dijkstra é usado para encontrar o menor caminho entre um nó origem e os demais nós de um grafo ponderado, desde que não existam pesos negativos<br>
+**Tempo:** O((V + E) log V) ou O(V²)<br>
+**Vantagem:** Mapas / GPS, Redes, Sistemas de recomendação, Jogos, Roteamento<br>
+**Desvantagens:** Se houver pesos negativos → use Bellman-Ford, Se o grafo for muito pequeno → solução simples funciona<br>
+**Visualização:** https://www.youtube.com/watch?v=IIZOWRwKa_Q<br>
+
+```kotlin
+import java.util.PriorityQueue
+    
+    data class Edge(val to: Int, val weight: Int)
+    
+    fun dijkstra(
+        graph: List<List<Edge>>,
+        start: Int
+    ): IntArray {
+    
+        val n = graph.size
+        val dist = IntArray(n) { Int.MAX_VALUE }
+        dist[start] = 0
+    
+        val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })
+        pq.add(start to 0)
+    
+        while (pq.isNotEmpty()) {
+            val (node, currentDist) = pq.poll()
+    
+            if (currentDist > dist[node]) continue
+    
+            for (edge in graph[node]) {
+                val newDist = currentDist + edge.weight
+    
+                if (newDist < dist[edge.to]) {
+                    dist[edge.to] = newDist
+                    pq.add(edge.to to newDist)
+                }
+            }
+        }
+    
+        return dist
+    }
+
+    val graph = listOf(
+        listOf(Edge(1, 4), Edge(2, 1)), // nó 0
+        listOf(Edge(3, 1)),            // nó 1
+        listOf(Edge(1, 2), Edge(3, 5)), // nó 2
+        emptyList()                    // nó 3
+    )
+    
+    val result = dijkstra(graph, 0)
+    println(result.toList()) // [0, 3, 1, 4]
+```
+
+
+### Bellman-Ford
+### A*
+### Kruskal
+### Prim
+### Topological Sort
 
 ## 🧠 Programação Dinâmica
-Fibonacci (DP)
-Knapsack (0/1)
-Longest Common Subsequence (LCS)
-Longest Increasing Subsequence (LIS)
-Edit Distance (Levenshtein)
-Coin Change
+### Fibonacci (DP)
+### Knapsack (0/1)
+### Longest Common Subsequence (LCS)
+### Longest Increasing Subsequence (LIS)
+### Edit Distance (Levenshtein)
+### Coin Change
 
 ## ⚡Algoritmos Gulosos (Greedy)
-Activity Selection
-Interval Scheduling
-Huffman Coding
-Kruskal
-Prim
-Coin Change (versão gulosa)
+### Activity Selection
+### Interval Scheduling
+### Huffman Coding
+### Kruskal
+### Prim
+### Coin Change (versão gulosa)
 
 ## 📐 Algoritmos de Aproximação
-Vertex Cover (2-approx)
-Set Cover
-Traveling Salesman (TSP – aproximação)
-Knapsack Approximation
+### Vertex Cover (2-approx)
+Qual é o MENOR conjunto possível de vértices que cobre todas as arestas? <br>
+1. Pegue uma aresta qualquer
+2. Coloque os dois vértices dessa aresta no conjunto
+3. Remova todas as arestas ligadas a eles
+4. Repita até não sobrar arestas
+   
+Complexidade: NP-Completo<br>
+Visualização: https://www.youtube.com/shorts/4lVbBPXAoq4<br>
+
+```kotlin
+data class Edge(val u: Int, val v: Int)
+fun vertexCoverApproximation(edges: MutableList<Edge>): Set<Int> {
+    val cover = mutableSetOf<Int>()
+
+    while (edges.isNotEmpty()) {
+        // pega uma aresta qualquer
+        val edge = edges.removeAt(0)
+
+        val u = edge.u
+        val v = edge.v
+
+        // adiciona os dois vértices
+        cover.add(u)
+        cover.add(v)
+
+        // remove todas as arestas ligadas a u ou v
+        edges.removeIf { it.u == u || it.v == u || it.u == v || it.v == v }
+    }
+
+    return cover
+}
+
+fun main() {
+    val edges = mutableListOf(
+        Edge(1, 2),
+        Edge(1, 3),
+        Edge(2, 4),
+        Edge(3, 4)
+    )
+
+    val cover = vertexCoverApproximation(edges)
+    println("Vertex Cover aproximado: $cover")
+}
+```
+
+### Set Cover
+### Traveling Salesman (TSP – aproximação)
+### Knapsack Approximation
 
 ## 🧱 Hashing e Estruturas Relacionadas
-Hash Table
-Open Addressing
-Separate Chaining
-Consistent Hashing
+### Hash Table
+### Open Addressing
+### Separate Chaining
+### Consistent Hashing
 
 ---
 
@@ -200,56 +302,10 @@ Consistent Hashing
     bfs(graph, 1)
 
     /************************ 6- Dijkstra Algorithm *****************************
-    * O algoritmo de Dijkstra é usado para encontrar o menor caminho entre um nó origem e os demais nós de um grafo ponderado, desde que não existam pesos negativos
-    * Tempo: O((V + E) log V) ou O(V²)
-    * Vantagem: Mapas / GPS, Redes, Sistemas de recomendação, Jogos, Roteamento
-    * Desvantagens: Se houver pesos negativos → use Bellman-Ford, Se o grafo for muito pequeno → solução simples funciona
-    * Visualização: https://www.youtube.com/watch?v=IIZOWRwKa_Q
+    
     */
 
-    import java.util.PriorityQueue
     
-    data class Edge(val to: Int, val weight: Int)
-    
-    fun dijkstra(
-        graph: List<List<Edge>>,
-        start: Int
-    ): IntArray {
-    
-        val n = graph.size
-        val dist = IntArray(n) { Int.MAX_VALUE }
-        dist[start] = 0
-    
-        val pq = PriorityQueue(compareBy<Pair<Int, Int>> { it.second })
-        pq.add(start to 0)
-    
-        while (pq.isNotEmpty()) {
-            val (node, currentDist) = pq.poll()
-    
-            if (currentDist > dist[node]) continue
-    
-            for (edge in graph[node]) {
-                val newDist = currentDist + edge.weight
-    
-                if (newDist < dist[edge.to]) {
-                    dist[edge.to] = newDist
-                    pq.add(edge.to to newDist)
-                }
-            }
-        }
-    
-        return dist
-    }
-
-    val graph = listOf(
-        listOf(Edge(1, 4), Edge(2, 1)), // nó 0
-        listOf(Edge(3, 1)),            // nó 1
-        listOf(Edge(1, 2), Edge(3, 5)), // nó 2
-        emptyList()                    // nó 3
-    )
-    
-    val result = dijkstra(graph, 0)
-    println(result.toList()) // [0, 3, 1, 4]
 
 
 
