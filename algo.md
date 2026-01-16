@@ -9,8 +9,8 @@
 
 ### Busca Binária (Binary Search)
 Posicao do meio como referencia e pergunta se é maior ou menos que o meio. Tem que estar ordenado! <br>
-**Tempo:** O(log n) <br>
-**Visualização:** https://www.youtube.com/shorts/c-PMOD2O7E4 <br>
+Tempo: O(log n) <br>
+Visualização: https://www.youtube.com/shorts/c-PMOD2O7E4 <br>
 
 ```kotlin
 fun binarySearch(arr: IntArray, target: Int): Int {
@@ -71,13 +71,51 @@ fun selectionSort(arr: IntArray) {
 
 ## 🌐 Algoritmos de Grafos
 ### BFS
+Usado para percorrer ou buscar elementos em um grafo ou árvore, explorando primeiro os nós mais próximos do ponto inicial.<br>
+Tempo: O(V + E).   V = vertice e A = arestas<br>
+Vantagem: Ideal para problemas de distância mínima em grafos não ponderados, simples<br>
+Desvantagens: Usa mais memória, Não funciona bem para grafos muito grandes ou infinitos<br>
+Visualização: https://www.youtube.com/shorts/umHJzlKFGlU<br>
+
+```kotlin
+    fun bfs(graph: Map<Int, List<Int>>, start: Int) {
+        val visited = mutableSetOf<Int>()
+        val queue: ArrayDeque<Int> = ArrayDeque()
+    
+        visited.add(start)
+        queue.add(start)
+    
+        while (queue.isNotEmpty()) {
+            val node = queue.removeFirst()
+            println(node)
+    
+            for (neighbor in graph[node] ?: emptyList()) {
+                if (!visited.contains(neighbor)) {
+                    visited.add(neighbor)
+                    queue.add(neighbor)
+                }
+            }
+        }
+    }
+
+    val graph = mapOf(
+        1 to listOf(2, 3),
+        2 to listOf(4),
+        3 to listOf(5),
+        4 to emptyList(),
+        5 to emptyList()
+    )
+    
+    bfs(graph, 1)
+
+```
 ### DFS
 ### Dijkstra
 O algoritmo de Dijkstra é usado para encontrar o menor caminho entre um nó origem e os demais nós de um grafo ponderado, desde que não existam pesos negativos<br>
-**Tempo:** O((V + E) log V) ou O(V²)<br>
-**Vantagem:** Mapas / GPS, Redes, Sistemas de recomendação, Jogos, Roteamento<br>
-**Desvantagens:** Se houver pesos negativos → use Bellman-Ford, Se o grafo for muito pequeno → solução simples funciona<br>
-**Visualização:** https://www.youtube.com/watch?v=IIZOWRwKa_Q<br>
+Tempo: O((V + E) log V) ou O(V²)<br>
+Vantagem: Mapas / GPS, Redes, Sistemas de recomendação, Jogos, Roteamento<br>
+Desvantagens: Se houver pesos negativos → use Bellman-Ford, Se o grafo for muito pequeno → solução simples funciona<br>
+Visualização: https://www.youtube.com/watch?v=IIZOWRwKa_Q<br>
 
 ```kotlin
 import java.util.PriorityQueue
@@ -274,50 +312,6 @@ fun main() {
     
         return listOf(first, middle, last).sorted()[1]
     }
-
-     /************************ 5- BFS (Busca em Largura) *****************************
-    * usado para percorrer ou buscar elementos em um grafo ou árvore, explorando primeiro os nós mais próximos do ponto inicial.
-    * Tempo:O(V + E).   V = vertice e A = arestas
-    * Vantagem: Ideal para problemas de distância mínima em grafos não ponderados, simples
-    * Desvantagens: Usa mais memória, Não funciona bem para grafos muito grandes ou infinitos
-    * Visualização: https://www.youtube.com/shorts/umHJzlKFGlU
-    */
-
-    fun bfs(graph: Map<Int, List<Int>>, start: Int) {
-        val visited = mutableSetOf<Int>()
-        val queue: ArrayDeque<Int> = ArrayDeque()
-    
-        visited.add(start)
-        queue.add(start)
-    
-        while (queue.isNotEmpty()) {
-            val node = queue.removeFirst()
-            println(node)
-    
-            for (neighbor in graph[node] ?: emptyList()) {
-                if (!visited.contains(neighbor)) {
-                    visited.add(neighbor)
-                    queue.add(neighbor)
-                }
-            }
-        }
-    }
-
-    val graph = mapOf(
-        1 to listOf(2, 3),
-        2 to listOf(4),
-        3 to listOf(5),
-        4 to emptyList(),
-        5 to emptyList()
-    )
-    
-    bfs(graph, 1)
-
-    /************************ 6- Dijkstra Algorithm *****************************
-    
-    */
-
-    
 
 
 
